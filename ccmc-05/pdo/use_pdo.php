@@ -18,4 +18,13 @@ try {
 } catch (PDOException $e) {
 	echo $e->getMessage();
 }
+if (!is_null($pdo)) {
+    echo "データベース接続に成功しました。";
+}else {
+    echo "データベース接続に失敗しました。";
+}
+$sql = "select * from restaurants";
+$pstmt = $pdo->prepare($sql);
+$rs = $pstmt->fetchaAll();
+
 ?>
